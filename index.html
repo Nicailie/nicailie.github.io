@@ -15,15 +15,18 @@
         /* Body styling */
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f0f4f8;
+            background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
 
         /* Header styling */
         header {
-            background-color: #edf2f7;
-            padding: 50px 0;
+            background: linear-gradient(90deg, #007bff, #00c851);
+            color: white;
+            padding: 20px 0;
             text-align: center;
         }
 
@@ -34,14 +37,7 @@
 
         header p {
             font-size: 1.2em;
-            color: #6c757d;
-        }
-
-        header img {
-            width: 300px;
-            height: auto;
-            border-radius: 50%;
-            margin-top: 20px;
+            font-weight: 300;
         }
 
         /* Section styling */
@@ -53,7 +49,7 @@
         section h2 {
             font-size: 2.5em;
             margin-bottom: 20px;
-            color: #333;
+            color: #007bff;
         }
 
         section p {
@@ -63,79 +59,56 @@
             color: #666;
         }
 
-        /* Profile card layout */
-        .profile-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 50px;
-        }
-
-        .profile-box {
+        /* Box styling for sections */
+        .box {
             background-color: white;
             padding: 20px;
-            margin: 0 20px;
-            max-width: 350px;
-            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 900px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            border-radius: 8px;
+            text-align: left;
         }
 
-        .profile-box h3 {
-            font-size: 1.8em;
+        .box h3 {
             margin-bottom: 10px;
             color: #007bff;
         }
 
-        .profile-box p {
-            color: #555;
+        .box p {
+            margin-bottom: 15px;
+        }
+
+        .box ul {
+            margin-left: 20px;
+        }
+
+        /* Styling for photo section */
+        .photo-box {
+            width: 200px;
+            height: 200px;
+            background-color: #ddd;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+
+        /* Button styling */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
             font-size: 1em;
-        }
-
-        .profile-box .details {
-            text-align: left;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
             margin-top: 20px;
+            transition: background 0.3s ease;
         }
 
-        .profile-box .details ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .profile-box .details ul li {
-            margin-bottom: 10px;
-        }
-
-        /* What I'm Doing Section */
-        .what-doing {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .doing-box {
-            background-color: #fff;
-            padding: 20px;
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .doing-box img {
-            width: 50px;
-            margin-bottom: 10px;
-        }
-
-        .doing-box h4 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-
-        .doing-box p {
-            color: #666;
+        .btn:hover {
+            background-color: #0056b3;
         }
 
         /* Footer styling */
@@ -144,7 +117,6 @@
             color: #fff;
             padding: 10px 0;
             text-align: center;
-            margin-top: 40px;
         }
 
         footer p {
@@ -164,24 +136,14 @@
 
         /* Responsive design */
         @media (max-width: 768px) {
-            .what-doing {
-                grid-template-columns: 1fr;
-            }
-
             header h1 {
                 font-size: 2.2em;
             }
-
             header p {
                 font-size: 1em;
             }
-
             section h2 {
                 font-size: 2em;
-            }
-
-            .profile-container {
-                flex-direction: column;
             }
         }
 
@@ -189,15 +151,12 @@
             header h1 {
                 font-size: 1.8em;
             }
-
             header p {
                 font-size: 0.9em;
             }
-
             section h2 {
                 font-size: 1.8em;
             }
-
             section p {
                 font-size: 1em;
             }
@@ -205,58 +164,109 @@
     </style>
 </head>
 <body>
-    <!-- Header Section -->
     <header>
-        <h1>I'm [Your Name]!</h1>
-        <p>A Machine Learning Expert and AI Enthusiast</p>
-        <img src="your-profile-image.jpg" alt="Your profile image">
+        <h1>Your Name</h1>
+        <p>AI Researcher | Machine Learning Enthusiast | Developer</p>
     </header>
 
-    <!-- Profile Section -->
     <section>
-        <div class="profile-container">
-            <div class="profile-box">
-                <h3>About Me</h3>
-                <p>I am a Machine Learning and AI researcher with a passion for developing cutting-edge models for identity-to-identity learning.</p>
-            </div>
-            <div class="profile-box details">
-                <h3>Details</h3>
-                <ul>
-                    <li>Name: [Your Name]</li>
-                    <li>Age: [Your Age]</li>
-                    <li>Location: [Your Location]</li>
-                    <li>Profession: AI Researcher</li>
-                    <li>Email: your.email@example.com</li>
-                </ul>
-            </div>
+        <h2>About Me</h2>
+        <div class="photo-box">
+            <!-- Add your photo here -->
+        </div>
+        <p>
+            Hi! I'm Your Name, a machine learning researcher and AI enthusiast with experience in developing models for identity-to-identity learning, optimizing genetic circuit design, and much more.
+        </p>
+    </section>
+
+    <section>
+        <h2>Extra-Curricular Activities</h2>
+        <div class="box">
+            <h3>Citizenship:</h3>
+            <ul>
+                <li>Volunteered as a class buddy, Peer Coach, and at various orientations.</li>
+                <li>Served on the Academic Committee and actively participated in community-building initiatives.</li>
+                <li>Developed strong relationships with 86% of Ashesi’s staff and faculty.</li>
+            </ul>
+        </div>
+        <div class="box">
+            <h3>Scholarship:</h3>
+            <ul>
+                <li>Peer tutor, research intern, and project coordinator for various university projects.</li>
+                <li>Represented Ashesi at forums and workshops, including the OSUN Summer Workshop in New York.</li>
+                <li>Delivered speeches, co-organized international poetry showcases, and represented scholars at events.</li>
+            </ul>
+        </div>
+        <div class="box">
+            <h3>Leadership:</h3>
+            <ul>
+                <li>Chaired the Judicial Electoral Council, led the Karate Club, and revived the Ashesi Honor Code.</li>
+                <li>Served as Campus Director for the Millennium Fellowship and Hult Prize 2023, raising funds and leading initiatives.</li>
+            </ul>
         </div>
     </section>
 
-    <!-- What I'm Doing Section -->
     <section>
-        <h2>What I'm Doing</h2>
-        <div class="what-doing">
-            <div class="doing-box">
-                <img src="icon1.png" alt="Strategy icon">
-                <h4>AI Development</h4>
-                <p>Building advanced AI models to solve complex problems.</p>
-            </div>
-            <div class="doing-box">
-                <img src="icon2.png" alt="Research icon">
-                <h4>Research</h4>
-                <p>Leading research on identity-to-identity learning models.</p>
-            </div>
-            <div class="doing-box">
-                <img src="icon3.png" alt="Consulting icon">
-                <h4>Consulting</h4>
-                <p>Advising businesses on how to implement machine learning solutions.</p>
-            </div>
+        <h2>Resume</h2>
+        <div class="box">
+            <h3>Education:</h3>
+            <p>Ashesi University, BSc. Computer Science - Expected August 2024</p>
+        </div>
+
+        <div class="box">
+            <h3>Achievements/Awards:</h3>
+            <ul>
+                <li>MasterCard Foundation Scholar Program (2020-2024)</li>
+                <li>Miss Conservation Africa, Miss Career Africa (2020)</li>
+                <li>Most Innovative Student, Ashesi University (2022-2023)</li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <h3>Work Experience:</h3>
+            <h4>Software Engineer at Woven Africa (Sep 2023 - Feb 2024)</h4>
+            <ul>
+                <li>Spearheaded backend development of a robust platform for Woven business operations.</li>
+                <li>Integrated advanced machine learning techniques to automate customization of clothing items.</li>
+                <li>Led a team of developers to ensure seamless platform deployment with a high emphasis on performance.</li>
+            </ul>
+
+            <h4>Front End Developer at Somalife (May 2023 - Jul 2023)</h4>
+            <ul>
+                <li>Designed user-friendly software, focusing on accessibility and responsiveness for illiterate users.</li>
+                <li>Utilized modern frameworks like React to create dynamic and interactive user interfaces.</li>
+                <li>Collaborated with UX/UI designers to ensure optimal user experience across all devices.</li>
+            </ul>
+
+            <h4>Research Assistant at My Runway Group (Jun 2022 - Sep 2022)</h4>
+            <ul>
+                <li>Organized entrepreneurship events in Ghana and Nigeria for key clients.</li>
+                <li>Researched marketing strategies and scouted events for the CEO's participation.</li>
+                <li>Compiled research insights into actionable recommendations for improving market outreach.</li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <h3>Skills:</h3>
+            <ul>
+                <li>Programming Languages: Python, Java, C, C++, SQL, HTML, CSS</li>
+                <li>Machine Learning, AI, Cloud Computing</li>
+                <li>Languages: Fluent in French, Swahili, Kinyarwanda; Basic German</li>
+            </ul>
         </div>
     </section>
 
-    <!-- Footer Section -->
+    <section>
+        <h2>Publication</h2>
+        <div class="box">
+            <p>
+                Check out my article on Medium: <a href="https://medium.com/axinc-ai/tacotron-2-a-high-quality-speech-synthesis-model-using-ai-for-waveform-conversion-05d39aba88dc" target="_blank">Tacotron 2: A High-Quality Speech Synthesis Model Using AI for Waveform Conversion</a>
+            </p>
+        </div>
+    </section>
+
     <footer>
-        <p>Connect with me on <a href="#">LinkedIn</a></p>
+        <p>Connect with me on <a href="https://www.linkedin.com/in/nice-cailie-ineza" target="_blank">LinkedIn</a></p>
     </footer>
 </body>
 </html>
