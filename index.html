@@ -442,7 +442,58 @@
                 height: 300px;
             }
         }
-        
+         /* Add new styles for writing section */
+        .writing-card {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            height: 100%;
+        }
+
+        .writing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .writing-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .writing-content {
+            padding: 25px;
+        }
+
+        .writing-title {
+            font-size: 20px;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .writing-description {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .writing-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .writing-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Add styles for non-tech projects */
+        .non-tech-project {
+            border-left: 2px solid var(--accent);
+        }
     </style>
 </head>
 <body>
@@ -525,6 +576,18 @@
                         <span class="tag">Data Analysis</span>
                     </div>
                 </div>
+                <div class="card">
+                    <i class="fas fa-pen-fancy card-icon"></i>
+                    <h3 class="card-title">Creative Writing</h3>
+                    <p class="card-description">
+                        Published writer exploring themes of hope, identity, and social change through articles and creative pieces.
+                    </p>
+                    <div class="tag-list">
+                        <span class="tag">Creative Writing</span>
+                        <span class="tag">Articles</span>
+                        <span class="tag">Social Commentary</span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -561,6 +624,24 @@
                 </div>
             </div>
         </section>
+
+        <section id="writing" class="section">
+        <h2 class="section-title">Featured Writing</h2>
+        <div class="grid">
+            <div class="writing-card">
+                <img src="https://picsum.photos/400/200" alt="In Search of Hope" class="writing-image">
+                <div class="writing-content">
+                    <h3 class="writing-title">In Search of Hope</h3>
+                    <p class="writing-description">
+                        A personal essay exploring themes of resilience and hope through the lens of African youth experiences.
+                    </p>
+                    <a href="https://www.osunglobalcommons.org/nice-cailie-in-search-of-hope/" class="writing-link">
+                        Read Article <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
         <section id="research" class="section">
             <h2 class="section-title">Featured Research</h2>
@@ -599,7 +680,8 @@
             <h2 class="section-title">Community Impact</h2>
             <div class="community-grid">
                 <div class="community-card">
-                    <div class="community-image"></div>
+                      <img src="https://picsum.photos/400/200" alt="Judicial Electoral Council" class="community-image">
+                       <div class="community-image"></div>
                     <div class="community-content">
                         <h3 class="community-title">Judicial Electoral Council</h3>
                         <div class="community-role">Chairperson</div>
@@ -639,6 +721,48 @@
                         </div>
                     </div>
                 </div>
+
+                 <div class="community-card non-tech-project">
+                <img src="https://picsum.photos/400/200" alt="Arts Initiative" class="community-image">
+                <div class="community-content">
+                    <h3 class="community-title">Arts for Change Initiative</h3>
+                    <div class="community-role">Founder & Program Director</div>
+                    <p class="community-description">
+                        Founded a creative arts program bringing art education to rural communities, organizing workshops and exhibitions showcasing local talent.
+                    </p>
+                    <div class="impact-stats">
+                        <div class="stat">
+                            <div class="stat-number">200+</div>
+                            <div class="stat-label">Students Reached</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">Art Exhibitions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                 <div class="community-card non-tech-project">
+                <img src="https://picsum.photos/400/200" alt="Literary Club" class="community-image">
+                <div class="community-content">
+                    <h3 class="community-title">Literary Club</h3>
+                    <div class="community-role">President</div>
+                    <p class="community-description">
+                        Led weekly creative writing workshops and organized literary events, fostering a vibrant writing community on campus.
+                    </p>
+                    <div class="impact-stats">
+                        <div class="stat">
+                            <div class="stat-number">30+</div>
+                            <div class="stat-label">Active Members</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Published Works</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
                 <div class="community-card">
                     <div class="community-image"></div>
