@@ -335,6 +335,7 @@
     width: 350px; /* Fixed width for better control */
     height: 350px; /* Equal height for perfect circle */
     margin: 0 auto;
+    background: transparent;
 }
 
 /* Profile image styling */
@@ -345,6 +346,8 @@
     border-radius: 50%; /* Makes the image circular */
     position: relative;
     z-index: 1;
+    background: none; 
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
 /* Remove the overlay div and replace with a bottom highlight */
