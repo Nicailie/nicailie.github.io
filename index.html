@@ -320,38 +320,63 @@
                 display: none;
             }
         }
-        .profile-section  {
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 50px; 
-            align-items: center; 
-            margin-bottom: 50px; 
-        }
-        .profile-image-container{
-            position: relative; 
-            border-radius: 8px; 
-            overflow: hidden; 
-        }
-        .profile-image {
-            width:100%;
-            height: 400px; 
-            object-fit: cover; 
-            filter: contrast(110%) brightness(90%); 
-        }
-        .profile-image-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                45deg,
-                rgba(100, 255, 218, 0.1),
-                rgba(10, 25, 47, 0.3)
-            );
-            border: 2px solid var(--accent);
-            border-radius: 8px;
-        }
+ /* Profile section layout */
+.profile-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+/* Profile image container */
+.profile-image-container {
+    position: relative;
+    width: 350px; /* Fixed width for better control */
+    height: 350px; /* Equal height for perfect circle */
+    margin: 0 auto;
+}
+
+/* Profile image styling */
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; /* Makes the image circular */
+    position: relative;
+    z-index: 1;
+}
+
+/* Remove the overlay div and replace with a bottom highlight */
+.profile-image-container::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--accent),
+        transparent
+    );
+    z-index: 0;
+}
+
+/* Media query for responsive design */
+@media (max-width: 768px) {
+    .profile-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .profile-image-container {
+        width: 280px;
+        height: 280px;
+    }
+}
 
         .profile-text {
             color: var(--text-secondary);
