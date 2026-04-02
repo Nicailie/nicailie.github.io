@@ -28,11 +28,6 @@
             line-height: 1.6;
         }
 
-        .blur-load {
-            background-size: cover;
-            background-position: center;
-        }
-
         .navbar {
             position: fixed;
             top: 0;
@@ -239,6 +234,7 @@
             margin-bottom: 15px;
         }
 
+        /* Fixed social links — no overlap with content */
         .social-links {
             position: fixed;
             bottom: 0;
@@ -298,88 +294,45 @@
             transform: translateY(-3px);
         }
 
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 0 20px;
-            }
-
-            .main-container {
-                padding: 0 20px;
-            }
-
-            .hero-title {
-                font-size: 48px;
-            }
-
-            .experience-item {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-
-            .social-links, .email-link {
-                display: none;
-            }
+        /* Profile section */
+        .profile-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 50px;
         }
- /* Profile section layout */
-.profile-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    align-items: center;
-    margin-bottom: 50px;
-}
 
-/* Profile image container */
-.profile-image-container {
-    position: relative;
-    width: 350px; /* Fixed width for better control */
-    height: 350px; /* Equal height for perfect circle */
-    margin: 0 auto;
-    background: transparent;
-}
+        .profile-image-container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            margin: 0 auto;
+            background: transparent;
+        }
 
-/* Profile image styling */
-.profile-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%; /* Makes the image circular */
-    position: relative;
-    z-index: 1;
-    background: none; 
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
-}
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            position: relative;
+            z-index: 1;
+            background: none;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
 
-/* Remove the overlay div and replace with a bottom highlight */
-.profile-image-container::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
-    height: 3px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        var(--accent),
-        transparent
-    );
-    z-index: 0;
-}
-
-/* Media query for responsive design */
-@media (max-width: 768px) {
-    .profile-section {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .profile-image-container {
-        width: 280px;
-        height: 280px;
-    }
-}
+        .profile-image-container::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            z-index: 0;
+        }
 
         .profile-text {
             color: var(--text-secondary);
@@ -387,7 +340,7 @@
             line-height: 1.8;
         }
 
-        /* Community Section Styles */
+        /* Community Section */
         .community-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -460,17 +413,7 @@
             font-size: 12px;
         }
 
-        @media (max-width: 768px) {
-            .profile-section {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .profile-image {
-                height: 300px;
-            }
-        }
-         /* Add new styles for writing section */
+        /* Writing section */
         .writing-card {
             background: var(--bg-secondary);
             border-radius: 8px;
@@ -518,9 +461,34 @@
             text-decoration: underline;
         }
 
-        /* Add styles for non-tech projects */
         .non-tech-project {
             border-left: 2px solid var(--accent);
+        }
+
+        /* LessWrong badge on writing cards */
+        .platform-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(100, 255, 218, 0.08);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            color: var(--accent);
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 0 20px; }
+            .main-container { padding: 0 20px; }
+            .hero-title { font-size: 48px; }
+            .experience-item { grid-template-columns: 1fr; gap: 10px; }
+            .social-links, .email-link { display: none; }
+            .profile-section { grid-template-columns: 1fr; gap: 30px; }
+            .profile-image-container { width: 280px; height: 280px; }
         }
     </style>
 </head>
@@ -533,6 +501,7 @@
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#research">Research</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#writing">Writing</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -545,8 +514,8 @@
                 <h1 class="hero-title">Nice Cailie Ineza.</h1>
                 <h2 class="hero-title" style="color: var(--text-secondary)">I build AI-powered solutions.</h2>
                 <p class="hero-description">
-                    I'm a computer scientist specializing in machine learning, software development, and research. 
-                    Currently focused on identity-to-identity learning and speech synthesis at the University of Cambridge.
+                    I'm a computer scientist specializing in machine learning, AI safety tooling, and research.
+                    Currently working as a Data Scientist at World Data Lab, with research experience in multimodal systems at the University of Cambridge.
                 </p>
             </div>
         </section>
@@ -556,14 +525,13 @@
             <div class="profile-section">
                 <div class="profile-image-container">
                     <img src="Ashesi_University (1).jpg" alt="Nice Cailie Ineza" class="profile-image">
-                    <div class="profile-image-overlay"></div>
                 </div>
                 <div class="profile-text">
-                    <p>Hello! I'm Nice Cailie Ineza, a computer scientist passionate about leveraging technology to create meaningful impact in healthcare and education. As a MasterCard Foundation Scholar at Ashesi University, I've combined technical excellence with community leadership.</p>
+                    <p>Hello! I'm Nice Cailie Ineza, a computer scientist passionate about leveraging technology to create meaningful impact. As a MasterCard Foundation Scholar at Ashesi University, I've combined technical depth with community leadership.</p>
                     <br>
-                    <p>My journey spans from developing AI solutions to leading community initiatives. I'm multilingual, speaking French, Swahili, Kirundi, Germany and Kinyarwanda, which helps me collaborate with diverse teams globally.</p>
+                    <p>My work spans ML pipelines for real-world forecasting, real-time AI safety monitoring systems, and multimodal research at Cambridge. I write about AI, technology, and ideas on LessWrong — including the tension between AI-assisted writing and authentic voice.</p>
                     <br>
-                    <p>Currently, I'm focused on research at the University of Cambridge, working on identity-to-identity learning and speech synthesis technologies.</p>
+                    <p>I'm multilingual — French, Swahili, Kirundi, Kinyarwanda, and basic German — which helps me collaborate with diverse teams across Africa and Europe.</p>
                 </div>
             </div>
 
@@ -572,12 +540,12 @@
                     <i class="fas fa-code card-icon"></i>
                     <h3 class="card-title">Software Development</h3>
                     <p class="card-description">
-                        Proficient in Python, Java, C++, and web technologies. Experienced in building robust backend systems and intuitive front-end interfaces.
+                        Proficient in Python, Java, and web technologies. Experienced in building robust backend systems, APIs, and intuitive front-end interfaces.
                     </p>
                     <div class="tag-list">
                         <span class="tag">Python</span>
                         <span class="tag">Java</span>
-                        <span class="tag">C++</span>
+                        <span class="tag">FastAPI</span>
                         <span class="tag">React</span>
                     </div>
                 </div>
@@ -585,36 +553,37 @@
                     <i class="fas fa-brain card-icon"></i>
                     <h3 class="card-title">AI & Machine Learning</h3>
                     <p class="card-description">
-                        Specialized in speech synthesis, emotion recognition, and genetic algorithms. Achieved 92% success rate in promoter efficacy prediction.
+                        Specialized in LLM systems, RAG, multimodal learning, and real-time AI monitoring. Built safety tooling with 88%+ accuracy and sub-150ms latency.
                     </p>
                     <div class="tag-list">
-                        <span class="tag">Neural Networks</span>
-                        <span class="tag">Speech Synthesis</span>
-                        <span class="tag">Genetic Algorithms</span>
+                        <span class="tag">LLMs</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">HuggingFace</span>
+                        <span class="tag">RAG</span>
                     </div>
                 </div>
                 <div class="card">
-                    <i class="fas fa-project-diagram card-icon"></i>
-                    <h3 class="card-title">Research</h3>
+                    <i class="fas fa-shield-alt card-icon"></i>
+                    <h3 class="card-title">AI Safety & Monitoring</h3>
                     <p class="card-description">
-                        Active researcher in identity-to-identity learning and genetic circuit design optimization. Published work on speech synthesis models.
+                        Designed layered detection pipelines for unsafe AI outputs — intent classification, domain risk scoring, and manipulation signal detection.
                     </p>
                     <div class="tag-list">
-                        <span class="tag">Research</span>
-                        <span class="tag">Academic Writing</span>
-                        <span class="tag">Data Analysis</span>
+                        <span class="tag">Risk Scoring</span>
+                        <span class="tag">Anomaly Detection</span>
+                        <span class="tag">Interpretable ML</span>
                     </div>
                 </div>
                 <div class="card">
                     <i class="fas fa-pen-fancy card-icon"></i>
-                    <h3 class="card-title">Creative Writing</h3>
+                    <h3 class="card-title">Writing & Research</h3>
                     <p class="card-description">
-                        Published writer exploring themes of hope, identity, and social change through articles and creative pieces.
+                        Published writer and researcher exploring AI, identity, and social change. Active on LessWrong writing about AI alignment topics and the future of human-AI collaboration.
                     </p>
                     <div class="tag-list">
-                        <span class="tag">Creative Writing</span>
-                        <span class="tag">Articles</span>
-                        <span class="tag">Social Commentary</span>
+                        <span class="tag">LessWrong</span>
+                        <span class="tag">AI Alignment</span>
+                        <span class="tag">Technical Writing</span>
                     </div>
                 </div>
             </div>
@@ -622,18 +591,37 @@
 
         <section id="experience" class="section">
             <h2 class="section-title">Experience</h2>
+
             <div class="experience-item">
-                <div class="experience-date">2023 - 2024</div>
+                <div class="experience-date">2025 – Present</div>
                 <div class="experience-content">
-                    <h3>Software Engineer</h3>
-                    <div class="experience-company">Woven Africa</div>
+                    <h3>Data Scientist</h3>
+                    <div class="experience-company">World Data Lab — Nairobi, Kenya</div>
                     <p class="card-description">
-                        Led backend development and implemented advanced machine learning techniques for clothing customization.
+                        Designing and deploying predictive ML models for large-scale poverty and demographic forecasting across East and West Africa. Building reproducible pipelines with model versioning and evaluation frameworks for high-stakes policy decision-making.
                     </p>
                     <div class="tag-list">
-                        <span class="tag">Backend Development</span>
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">API Design</span>
+                        <span class="tag">Predictive Modeling</span>
+                        <span class="tag">ML Pipelines</span>
+                        <span class="tag">Forecasting</span>
+                        <span class="tag">Policy Analytics</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-date">2024 – 2025</div>
+                <div class="experience-content">
+                    <h3>Research Intern — Identity-to-Identity Learning</h3>
+                    <div class="experience-company">University of Cambridge, Dept. of Computer Science</div>
+                    <p class="card-description">
+                        Designed and experimented with multimodal ML models combining text and audio for identity-preserving speech synthesis. Conducted literature review on model limitations, failure modes, and alignment considerations for identity-replication systems.
+                    </p>
+                    <div class="tag-list">
+                        <span class="tag">Multimodal ML</span>
+                        <span class="tag">Speech Synthesis</span>
+                        <span class="tag">Alignment</span>
+                        <span class="tag">PyTorch</span>
                     </div>
                 </div>
             </div>
@@ -642,9 +630,9 @@
                 <div class="experience-date">2023</div>
                 <div class="experience-content">
                     <h3>Front End Developer</h3>
-                    <div class="experience-company">Somalife</div>
+                    <div class="experience-company">Somalife — Accra, Ghana</div>
                     <p class="card-description">
-                        Designed accessible interfaces using React framework for enhanced user experience.
+                        Designed accessible, responsive interfaces for non-literate users using React. Collaborated with backend engineers to integrate APIs and data-driven features.
                     </p>
                     <div class="tag-list">
                         <span class="tag">React</span>
@@ -653,130 +641,181 @@
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="experience-item">
-                <div class="experience-date">2022</div>
-                <div class="experience-content">
-                    <h3>Back End Developer</h3>
-                    <div class="experience-company">Hospital Management System</div>
-                    <p class="card-description">
-                        Designed accessible interfaces using React framework for enhanced user experience.
-                    </p>
-                    <div class="tag-list">
-                        <span class="tag">Java</span>
-                        <span class="tag">UI/UX</span>
-                        <span class="tag">Accessibility</span>
+        <section id="projects" class="section">
+            <h2 class="section-title">Independent Projects</h2>
+            <div class="grid">
+
+                <div class="project-card">
+                    <div class="project-image" style="display:flex;align-items:center;justify-content:center;">
+                        <i class="fas fa-shield-alt" style="font-size:48px;color:var(--accent);opacity:0.4;"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI Sentinel — Real-Time ML Monitoring & Risk Detection</h3>
+                        <p class="project-description">
+                            A FastAPI-based system to monitor LLM outputs in real-time and detect anomalous, unsafe, or manipulative patterns. Features layered detection pipelines covering intent classification, domain risk scoring, and manipulation signal detection. Achieved 88%+ accuracy with sub-150ms latency — production-ready and suitable for integration into LLM-based systems.
+                        </p>
+                        <div class="tag-list">
+                            <span class="tag">FastAPI</span>
+                            <span class="tag">LLM Safety</span>
+                            <span class="tag">Risk Scoring</span>
+                            <span class="tag">Real-Time ML</span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+                <div class="project-card">
+                    <div class="project-image" style="display:flex;align-items:center;justify-content:center;">
+                        <i class="fas fa-images" style="font-size:48px;color:var(--accent);opacity:0.4;"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Cross-Platform Photo Sharing App</h3>
+                        <p class="project-description">
+                            A photo sharing platform built with a focus on user experience optimization using simple, well-chosen methods — fast load times, adaptive image delivery, and intuitive interactions. Designed from the ground up to work seamlessly across platforms and screen sizes, prioritizing reliability and accessibility over complexity.
+                        </p>
+                        <div class="tag-list">
+                            <span class="tag">Cross-Platform</span>
+                            <span class="tag">UX Optimization</span>
+                            <span class="tag">Adaptive Media</span>
+                            <span class="tag">Responsive Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" style="display:flex;align-items:center;justify-content:center;">
+                        <i class="fas fa-plane" style="font-size:48px;color:var(--accent);opacity:0.4;"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Peer-to-Peer Trip-Based Delivery Platform</h3>
+                        <p class="project-description">
+                            A two-sided platform connecting senders with travelers for secure small-item delivery across Africa and to Europe. Features trust-aware matching logic incorporating traveler reputation and delivery history, with an end-to-end user flow designed for safety and reliability.
+                        </p>
+                        <div class="tag-list">
+                            <span class="tag">Trust Systems</span>
+                            <span class="tag">Matching Logic</span>
+                            <span class="tag">Platform Design</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
         <section id="writing" class="section">
-            <h2 class="section-title">Featured Writing</h2>
+            <h2 class="section-title">Writing</h2>
             <div class="grid">
+
+                <div class="writing-card">
+                    <div class="writing-content">
+                        <div class="platform-badge"><i class="fas fa-pen-nib"></i> LessWrong</div>
+                        <h3 class="writing-title">I am definitely missing the pre-AI writing era</h3>
+                        <p class="writing-description">
+                            A reflection on how the pressure to sound perfect — with or without AI — can strip the authentic voice from technical writing. Written after drafting a first public technical post and confronting what gets lost in the pursuit of polish.
+                        </p>
+                        <a href="https://www.lesswrong.com/posts/BJ4pnropWdnzzgeJc/i-am-definitely-missing-the-pre-ai-writing-era" target="_blank" class="writing-link">
+                            Read on LessWrong <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
                 <div class="writing-card">
                     <img src="search.jpg" alt="In Search of Hope" class="writing-image">
                     <div class="writing-content">
                         <h3 class="writing-title">In Search of Hope</h3>
                         <p class="writing-description">
-                            In response to the earthquake that hit Turkey in 2023, this is a story of the aftermath. 
-A harrowing first-person account of a young girl's survival during an earthquake, capturing the trauma of losing her home, being trapped in the rubble, and desperately searching for her little brother while grappling with memories of previous war-related displacement and questioning her faith amid chaos.
+                            A harrowing first-person account of a young girl's survival during an earthquake, capturing the trauma of losing her home, being trapped in rubble, and desperately searching for her little brother — written in response to the 2023 Turkey earthquake.
                         </p>
-                        <a href="https://www.osunglobalcommons.org/nice-cailie-in-search-of-hope/" class="writing-link">
+                        <a href="https://www.osunglobalcommons.org/nice-cailie-in-search-of-hope/" target="_blank" class="writing-link">
                             Read Article <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
+
                 <div class="writing-card">
-                    <img src="fish.jpeg" alt="In Search of Hope" class="writing-image">
+                    <img src="fish.jpeg" alt="Justice under Water" class="writing-image">
                     <div class="writing-content">
                         <h3 class="writing-title">Justice under Water</h3>
                         <p class="writing-description">
-                            A global common issue about climate and sustainability. The consequences of plastic pollution in teh sea.
+                            A global commons piece on climate and sustainability — exploring the consequences of plastic pollution in the sea through the lens of environmental justice.
                         </p>
-                        <a href="https://www.osunglobalcommons.org/justice-under-water-think-like-an-aquatic-creature-by/" class="writing-link">
+                        <a href="https://www.osunglobalcommons.org/justice-under-water-think-like-an-aquatic-creature-by/" target="_blank" class="writing-link">
                             Read Article <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
+
             </div>
         </section>
 
         <section id="research" class="section">
             <h2 class="section-title">Featured Research</h2>
             <div class="grid">
-               
 
                 <div class="project-card">
-                    <div class="project-image"><img src="reach.jpg" alt="In Search of Hope" class="writing-image"></div>
+                    <div class="project-image"><img src="reach.jpg" alt="WHO-PEN Research" class="writing-image"></div>
                     <div class="project-content">
-                        <a href="https://reachalliance.org/case-study/assessment-and-evaluation-of-the-world-health-organization-package-of-essential-non-communicable-disease-intervention-in-ghana/" class="writing-link">
+                        <a href="https://reachalliance.org/case-study/assessment-and-evaluation-of-the-world-health-organization-package-of-essential-non-communicable-disease-intervention-in-ghana/" target="_blank" class="writing-link">
                             <h3 class="project-title">Evaluating the WHO-PEN Framework for Cardiovascular Disease Management in Ghana</h3>
                         </a>
                         <p class="project-description">
-                            This study evaluates the implementation of the WHO-PEN framework for managing cardiovascular diseases (CVDs) in underserved Ghanaian communities. Using a mixed-methods approach, it explores challenges like weak data systems, staff shortages, and medication supply, aiming to improve NCD care delivery in remote areas.
+                            Evaluates the WHO-PEN framework for managing cardiovascular diseases in underserved Ghanaian communities. Using a mixed-methods approach, explores challenges including weak data systems, staff shortages, and medication supply issues.
                         </p>
                         <div class="tag-list">
-                            <span class="tag">Data Analysis: Statistical & Thematic</span>
-                            <span class="tag">Data Interpretation</span>
-                            <span class="tag">Data Collection</span>
-                            <span class="tag">Health Policy Analysis</span>
-                            <span class="tag">Report writing</span>
-                            
+                            <span class="tag">Mixed Methods</span>
+                            <span class="tag">Health Policy</span>
+                            <span class="tag">Data Analysis</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image"><img src="genetic.jpg" alt="In Search of Hope" class="writing-image"></div>
+                    <div class="project-image"><img src="genetic.jpg" alt="Genetic Circuits" class="writing-image"></div>
                     <div class="project-content">
-                        <a href="https://hdl.handle.net/20.500.11988/1170" class="writing-link">
+                        <a href="https://hdl.handle.net/20.500.11988/1170" target="_blank" class="writing-link">
                             <h3 class="project-title">Use of Machine Learning for the Optimization of Genetic Circuits in Synthetic Biology</h3>
                         </a>
                         <p class="project-description">
-                            This study leverages machine learning (ML) to optimize genetic circuit design in synthetic biology, focusing on predicting promoter efficacy for gene expression in E. coli. 
-                            Using models like Genetic Algorithms, SVMs, and Neural Networks with datasets such as RegulonDB, the approach achieved 92% accuracy, advancing efficiency and precision.
+                            Applied Genetic Algorithms, SVMs, and Neural Networks to optimize genetic circuit design in E. coli, achieving 92% accuracy in predicting promoter efficacy using RegulonDB and EcoCyc datasets.
                         </p>
                         <div class="tag-list">
                             <span class="tag">Machine Learning</span>
                             <span class="tag">Bioinformatics</span>
-                            <span class="tag">Genetic Algorithm</span>
-                            <span class="tag">Neural Network</span>
-                            <span class="tag">Support Vector Machine</span>
-                        
+                            <span class="tag">Neural Networks</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image"><img src="emotion.jpg" alt="In Search of Hope" class="writing-image"></div>
+                    <div class="project-image"><img src="emotion.jpg" alt="Emotion Recognition" class="writing-image"></div>
                     <div class="project-content">
-                        <h3 class="project-title">Intelligence Emotion Recognition</h3>
+                        <h3 class="project-title">Intelligent Emotion Recognition System</h3>
                         <p class="project-description">
-                            Applied ML models to optimize genetic circuit design in E. coli, achieving 92% success rate.
+                            Trained and fine-tuned emotion recognition models achieving 86% classification accuracy. Built reproducible training pipelines and a lightweight UI for model inference visualization.
                         </p>
                         <div class="tag-list">
-                            <span class="tag">Machine Learning</span>
                             <span class="tag">Computer Vision</span>
-                            <span class="tag">Artificial Intelligence</span>
-                            <span class="tag">Recurrent Neural Network</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">RNN</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image"></div>
+                    <div class="project-image" style="display:flex;align-items:center;justify-content:center;">
+                        <i class="fas fa-user-circle" style="font-size:48px;color:var(--accent);opacity:0.4;"></i>
+                    </div>
                     <div class="project-content">
-                        <h3 class="project-title">i2i: Identity to Identity Deep Persona Replication Through Conversational Response, Voice, and Facial Expressions</h3>
+                        <h3 class="project-title">i2i: Identity to Identity — Deep Persona Replication Through Conversational Response, Voice, and Facial Expressions</h3>
                         <p class="project-description">
-                            Research at University of Cambridge focusing on human appearance and personality replication using multi-model data. 
-                            The aim is to replicate a person’s identity in a highly realistic and interactive manner by synthesizing their conversational patterns, vocal characteristics, and facial expressions
+                            Research at the University of Cambridge on replicating a person's identity in a highly realistic and interactive manner by synthesizing conversational patterns, vocal characteristics, and facial expressions using multimodal data.
                         </p>
                         <div class="tag-list">
                             <span class="tag">Deep Learning</span>
                             <span class="tag">Speech Synthesis</span>
                             <span class="tag">NLP</span>
+                            <span class="tag">Multimodal ML</span>
                         </div>
                     </div>
                 </div>
@@ -789,7 +828,24 @@ A harrowing first-person account of a young girl's survival during an earthquake
             <div class="community-grid">
 
                 <div class="community-card non-tech-project">
-                    <div class="community-image"></div> 
+                    <div class="community-image"></div>
+                    <div class="community-content">
+                        <h3 class="community-title">Kwiga — Burundi Tech Hackathon</h3>
+                        <div class="community-role">Co-organizer</div>
+                        <p class="community-description">
+                            Organized a national hackathon for Burundian CS students in final year and graduate programs, creating a space for local tech talent to compete and connect.
+                        </p>
+                        <div class="impact-stats">
+                            <div class="stat">
+                                <div class="stat-number">2025</div>
+                                <div class="stat-label">Inaugural Edition</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="community-card non-tech-project">
+                    <div class="community-image"></div>
                     <div class="community-content">
                         <h3 class="community-title">Judicial Electoral Council</h3>
                         <div class="community-role">Chairperson</div>
@@ -797,10 +853,6 @@ A harrowing first-person account of a young girl's survival during an earthquake
                             Led the review and implementation of the ASC constitution and revived the Ashesi Social Honor Code, impacting the entire student body.
                         </p>
                         <div class="impact-stats">
-                            <div class="stat">
-                                <div class="stat-number">100%</div>
-                                <div class="stat-label">Honor Code Adoption</div>
-                            </div>
                             <div class="stat">
                                 <div class="stat-number">1200+</div>
                                 <div class="stat-label">Students Impacted</div>
@@ -812,61 +864,19 @@ A harrowing first-person account of a young girl's survival during an earthquake
                 <div class="community-card non-tech-project">
                     <div class="community-image"></div>
                     <div class="community-content">
-                        <h3 class="community-title">Millennium Fellowship</h3>
-                        <div class="community-role">Campus Director</div>
-                        <p class="community-description">
-                            Directed initiatives promoting arts in rural communities and coordinated impactful projects reaching numerous beneficiaries.
-                        </p>
-                        <div class="impact-stats">
-                            <div class="stat">
-                                <div class="stat-number">8</div>
-                                <div class="stat-label">Team Members</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-number">5</div>
-                                <div class="stat-label">Communities Reached</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="community-card non-tech-project">
-                    <img src="https://picsum.photos/400/200" alt="Arts Initiative" class="community-image">
-                    <div class="community-content">
-                        <h3 class="community-title">Hult Prize Foundation</h3>
-                        <div class="community-role">Campus Coordinator</div>
-                        <p class="community-description">
-                        Founded a creative arts program bringing art education to rural communities, organizing workshops and exhibitions showcasing local talent.
-                        </p>
-                        <div class="impact-stats">
-                            <div class="stat">
-                                <div class="stat-number">13</div>
-                                <div class="stat-label">Students entrepreneurs Reached</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-number">3</div>
-                                <div class="stat-label">Creative Startups</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            
-                <div class="community-card non-tech-project">
-                    <img src="https://picsum.photos/400/200" alt="Literary Club" class="community-image">
-                    <div class="community-content">
                         <h3 class="community-title">Tedx Ashesi University</h3>
                         <div class="community-role">Co-Coordinator</div>
                         <p class="community-description">
-                            Co-organized Tedx 2023 event, by coordinating club activities and evaluating curation team in selecting speakers.
+                            Co-organized TEDx 2023, coordinating the curation team and speaker selection.
                         </p>
                         <div class="impact-stats">
                             <div class="stat">
-                                <div class="stat-number">30+</div>
-                                <div class="stat-label">Active Club Members</div>
+                                <div class="stat-number">150</div>
+                                <div class="stat-label">Participants</div>
                             </div>
                             <div class="stat">
-                                <div class="stat-number">150</div>
-                                <div class="stat-label">Participants hosted</div>
+                                <div class="stat-number">10</div>
+                                <div class="stat-label">Speakers</div>
                             </div>
                         </div>
                     </div>
@@ -875,47 +885,47 @@ A harrowing first-person account of a young girl's survival during an earthquake
                 <div class="community-card non-tech-project">
                     <div class="community-image"></div>
                     <div class="community-content">
-                        <h3 class="community-title">Academic Support</h3>
-                        <div class="community-role">Peer Coach & Tutor</div>
+                        <h3 class="community-title">Millennium Fellowship</h3>
+                        <div class="community-role">Campus Director</div>
                         <p class="community-description">
-                            Served as a peer coach and tutor at the Math and Writing Centers, helping fellow students excel academically.
+                            Directed initiatives promoting arts in rural communities, coordinating impactful projects across multiple communities.
                         </p>
                         <div class="impact-stats">
                             <div class="stat">
-                                <div class="stat-number">2+</div>
-                                <div class="stat-label">Years of Service</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-number">200+</div>
-                                <div class="stat-label">Students Served</div>
+                                <div class="stat-number">5</div>
+                                <div class="stat-label">Communities Reached</div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
     </div>
 
+    <!-- Social links: Kaggle removed, LessWrong added -->
     <div class="social-links">
-        <a href="https://linkedin.com/in/nice-cailie-ineza" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://medium.com/@nicecailieineza" target="_blank">
-            <i class="fab fa-medium"></i></a>
-         <a href="https://www.kaggle.com/your-kaggle-profile" target="_blank"><i class="fab fa-kaggle"></i></a>
-        <a href="https://huggingface.co/your-hugging-face-profile" target="_blank"><i class="fab fa-hugging-face"></i></a>
+        <a href="https://linkedin.com/in/nice-cailie-ineza" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://medium.com/@nicecailieineza" target="_blank" title="Medium"><i class="fab fa-medium"></i></a>
+        <a href="https://www.lesswrong.com/users/n-cailie" target="_blank" title="LessWrong">
+            <!-- LessWrong doesn't have a FontAwesome icon, using a styled text link -->
+            <span style="font-size:13px;font-weight:bold;letter-spacing:-0.5px;color:var(--text-secondary);transition:color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">LW</span>
+        </a>
+        <a href="https://huggingface.co/your-hugging-face-profile" target="_blank" title="HuggingFace">
+            <span style="font-size:13px;font-weight:bold;color:var(--text-secondary);transition:color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">🤗</span>
+        </a>
     </div>
 
-     <div class="email-link">
-        <a href="mailto:nicecailieineza@gmail.com">nicecaileineza@gmail.com</a>
-        <a href="mailto:nice.ineza@ashesi.edu.gh">nice.ineza@ashesi.edu.gh</a>
+    <div class="email-link">
+        <a href="mailto:nicecailieineza@gmail.com">nicecailieineza@gmail.com</a>
     </div>
 
-    
-<section id="contact" class="section">
+    <section id="contact" class="section">
         <h2 class="section-title">Get In Touch</h2>
         <div class="main-container" style="text-align: center; max-width: 600px; margin: 0 auto;">
             <p style="color: var(--text-secondary); margin-bottom: 30px;">
-                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                I'm always open to discussing new projects, research ideas, or opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
             </p>
             <a href="mailto:nicecailieineza@gmail.com" style="
                 display: inline-block;
@@ -937,32 +947,29 @@ A harrowing first-person account of a young girl's survival during an earthquake
         font-size: 14px;
     ">
         <p>Designed & Built by Nice Cailie Ineza</p>
-        <p style="margin-top: 5px;">© 2024 All rights reserved</p>
+        <p style="margin-top: 5px;">© 2025 All rights reserved</p>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
             });
         });
 
-        // Navbar scroll behavior
         let lastScroll = 0;
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
             const currentScroll = window.pageYOffset;
-
-            if (currentScroll > lastScroll) {
+            if (currentScroll > lastScroll && currentScroll > 100) {
                 navbar.style.transform = 'translateY(-100%)';
             } else {
                 navbar.style.transform = 'translateY(0)';
             }
             lastScroll = currentScroll;
+            navbar.style.transition = 'transform 0.3s ease';
         });
     </script>
 </body>
